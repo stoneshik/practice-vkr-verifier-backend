@@ -25,6 +25,10 @@ storage:
   uploads-dir: "../uploads"
 
 verifier:
-  working-dir: "../verifier"
+  working-dir: ".."
   python-executable: "../verifier/.venv/bin/python"
   module-name: "verifier"
+  timeout-seconds: 60
+  batch-size: 5
+  scheduler:
+    fixed-delay-ms: 5000

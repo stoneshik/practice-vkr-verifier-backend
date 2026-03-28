@@ -1,5 +1,6 @@
 package vkr.verifier.repository;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.domain.Page;
@@ -33,4 +34,17 @@ public interface ReportRepository extends JpaRepository<Report, UUID> {
         @Param("partUuid") String partUuid,
         Pageable pageable
     );
+
+    @Query(
+        value = """
+            select *
+            from reports
+            where report_status = 'PENDING'
+            order by created_at
+            limit :limit
+            for update skip locked
+            """,
+        nativeQuery = true
+    )
+    List<Report> lockNextPendingBatch(@Param("limit") int limit);
 }

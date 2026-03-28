@@ -27,43 +27,41 @@ public class FileStorageService {
             .normalize();
     }
 
-    public void save(MultipartFile file, String storedFilename) {
+    public void save(MultipartFile file, String fileName) {
         if (file == null || file.isEmpty()) {
             throw new IllegalArgumentException("Файл пустой");
         }
-        if (storedFilename == null || storedFilename.isBlank()) {
+        if (fileName == null || fileName.isBlank()) {
             throw new IllegalArgumentException("Имя файла для сохранения не задано");
         }
         try {
             Path storageDir = getStorageDir();
             Files.createDirectories(storageDir);
-
-            Path targetPath = storageDir.resolve(storedFilename).normalize();
-
+            Path targetPath = storageDir.resolve(fileName).normalize();
             try (InputStream inputStream = file.getInputStream()) {
                 Files.copy(inputStream, targetPath, StandardCopyOption.REPLACE_EXISTING);
             }
         } catch (IOException e) {
-            throw new RuntimeException("Не удалось сохранить файл: " + storedFilename, e);
+            throw new RuntimeException("Не удалось сохранить файл: " + fileName, e);
         }
     }
 
-    public void delete(String storedFilename) {
-        if (storedFilename == null || storedFilename.isBlank()) {
+    public void delete(String fileName) {
+        if (fileName == null || fileName.isBlank()) {
             throw new IllegalArgumentException("Имя файла для удаления не задано");
         }
         try {
-            Path filePath = getStorageDir().resolve(storedFilename).normalize();
+            Path filePath = getStorageDir().resolve(fileName).normalize();
             Files.deleteIfExists(filePath);
         } catch (IOException e) {
-            throw new RuntimeException("Не удалось удалить файл: " + storedFilename, e);
+            throw new RuntimeException("Не удалось удалить файл: " + fileName, e);
         }
     }
 
-    public Path getFilePath(String storedFilename) {
-        if (storedFilename == null || storedFilename.isBlank()) {
+    public Path getFilePath(String fileName) {
+        if (fileName == null || fileName.isBlank()) {
             throw new IllegalArgumentException("Имя файла не задано");
         }
-        return getStorageDir().resolve(storedFilename).normalize();
+        return getStorageDir().resolve(fileName).normalize();
     }
 }

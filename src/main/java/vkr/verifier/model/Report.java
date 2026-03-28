@@ -40,7 +40,7 @@ public class Report {
     private ReportStatus reportStatus;
 
     @Lob
-    @Column(name = "report_json")
+    @Column(name = "report_json", columnDefinition = "TEXT")
     private String reportJson;
 
     @Column(name = "created_at", nullable = false, updatable = false)
