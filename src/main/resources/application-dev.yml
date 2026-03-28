@@ -22,9 +22,9 @@ spring:
       matching-strategy: "ant_path_matcher"
 
 storage:
-  uploads-dir: "uploads"
+  uploads-dir: "../uploads"
 
 verifier:
-  working-dir: "verifier"
-  python-executable: ".venv/bin/python"
+  working-dir: "../verifier"
+  python-executable: "../verifier/.venv/bin/python"
   module-name: "verifier"

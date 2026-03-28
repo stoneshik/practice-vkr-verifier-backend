@@ -34,7 +34,7 @@ public class ReportService {
         UUID reportId = UUID.randomUUID();
         Report report = Report.builder()
             .id(reportId)
-            .reportStatus(ReportStatus.PROCESSING)
+            .reportStatus(ReportStatus.PENDING)
             .reportJson(null)
             .createdAt(Instant.now())
             .build();
