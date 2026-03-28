@@ -5,10 +5,10 @@ spring:
   main:
     banner-mode: "off"
   datasource:
-    own:
-      username: ${CONTAINER.USERNAME}
-      password: ${CONTAINER.PASSWORD}
-      url: ${CONTAINER.URL}
+    url: "${VERIFIER_SERVICE_BD_URL}"
+    username: "${VERIFIER_SERVICE_BD_USERNAME}"
+    password: "${VERIFIER_SERVICE_BD_PASSWORD}"
+    driver-class-name: "org.postgresql.Driver"
   jpa:
     generate-ddl: true
     hibernate.ddl-auto: "update"
@@ -22,11 +22,11 @@ spring:
       matching-strategy: "ant_path_matcher"
 
 storage:
-  uploads-dir: "../uploads"
+  uploads-dir: "uploads"
 
 verifier:
-  working-dir: ".."
-  python-executable: "../verifier/.venv/bin/python"
+  working-dir: "."
+  python-executable: "verifier/.venv/bin/python"
   module-name: "verifier"
   timeout-seconds: 60
   batch-size: 5
