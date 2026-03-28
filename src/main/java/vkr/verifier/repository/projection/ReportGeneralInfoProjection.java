@@ -1,4 +1,4 @@
-package vkr.verifier.projection;
+package vkr.verifier.repository.projection;
 
 import java.time.Instant;
 import java.util.UUID;

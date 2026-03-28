@@ -20,3 +20,11 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: "ant_path_matcher"
+
+storage:
+  uploads-dir: "uploads"
+
+verifier:
+  working-dir: "verifier"
+  python-executable: ".venv/bin/python"
+  module-name: "verifier"

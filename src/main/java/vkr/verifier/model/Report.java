@@ -7,7 +7,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.PrePersist;
@@ -33,7 +32,6 @@ public class Report {
     @Id
     @EqualsAndHashCode.Include
     @ToString.Include
-    @GeneratedValue
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 

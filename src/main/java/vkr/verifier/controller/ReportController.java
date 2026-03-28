@@ -31,14 +31,16 @@ public class ReportController {
     public ResponseEntity<ReportGeneralInfoResponseDto> upload(
         @RequestParam("file") MultipartFile file
     ) {
-        return ResponseEntity.accepted().body(reportService.createReport(file));
+        return ResponseEntity
+            .accepted()
+            .body(reportService.createReport(file));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ReportResponseDto> getById(@PathVariable UUID id) {
-        return ResponseEntity.ok(
-            reportService.getById(id)
-        );
+        return ResponseEntity
+            .ok()
+            .body(reportService.getById(id));
     }
 
     @GetMapping
@@ -46,8 +48,8 @@ public class ReportController {
         @RequestParam(required = false) String partUuid,
         @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable
     ) {
-        return ResponseEntity.ok(
-            reportService.getAll(partUuid, pageable)
-        );
+        return ResponseEntity
+            .ok()
+            .body(reportService.getAll(partUuid, pageable));
     }
 }
