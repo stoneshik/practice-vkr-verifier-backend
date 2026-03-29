@@ -233,6 +233,14 @@ GET /api/v1/reports?partUuid=2f0c&page=0&size=10&sort=createdAt,desc
 
 ---
 
+## 4. Получение отчёта json
+
+### `GET /api/v1/reports/{id}/json`
+
+Возвращает отчёт в формате json.
+
+---
+
 ## Работа с Python verifier
 
 Backend запускает Python verifier через `ProcessBuilder`.

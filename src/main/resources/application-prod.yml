@@ -20,6 +20,10 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: "ant_path_matcher"
+  servlet:
+    multipart:
+      max-file-size: 250MB
+      max-request-size: 250MB
 
 storage:
   uploads-dir: "uploads"

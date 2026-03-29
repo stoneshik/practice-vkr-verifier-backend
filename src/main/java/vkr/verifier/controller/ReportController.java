@@ -43,6 +43,14 @@ public class ReportController {
             .body(reportService.getById(id));
     }
 
+    @GetMapping("/{id}/json")
+    public ResponseEntity<Object> getByIdJson(@PathVariable UUID id) {
+        return ResponseEntity
+            .ok()
+            .contentType(MediaType.APPLICATION_JSON)
+            .body(reportService.getById(id).getReportJson());
+    }
+
     @GetMapping
     public ResponseEntity<ReportsGeneralInfoPageDto> getAll(
         @RequestParam(required = false) String partUuid,
