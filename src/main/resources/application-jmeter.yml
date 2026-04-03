@@ -1,0 +1,38 @@
+server:
+  port: "${VERIFIER_SERVICE_PORT}"
+
+spring:
+  main:
+    banner-mode: "off"
+  datasource:
+    url: "${VERIFIER_SERVICE_BD_URL}"
+    username: "${VERIFIER_SERVICE_BD_USERNAME}"
+    password: "${VERIFIER_SERVICE_BD_PASSWORD}"
+    driver-class-name: "org.postgresql.Driver"
+  jpa:
+    generate-ddl: true
+    hibernate.ddl-auto: "create"
+    properties:
+      jakarta:
+        persistence:
+          validation:
+            mode: "auto"
+  mvc:
+    pathmatch:
+      matching-strategy: "ant_path_matcher"
+  servlet:
+    multipart:
+      max-file-size: 250MB
+      max-request-size: 250MB
+
+storage:
+  uploads-dir: "../uploads"
+
+verifier:
+  working-dir: ".."
+  python-executable: "../verifier/.venv/bin/python"
+  module-name: "verifier"
+  timeout-seconds: 60
+  batch-size: 10
+  scheduler:
+    fixed-delay-ms: 1000
