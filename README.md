@@ -329,8 +329,29 @@ cd ../verifier
 
 Если эта команда не работает вручную, backend тоже не сможет её запустить.
 
+## 5. Запустить БД
 
-## 5. Собрать и запустить Spring Boot
+Добавлен `docker-compose.yml` файл с запуском бд postgresql по адресу `jdbc:postgresql://localhost:33510/verifier_service`.
+
+Запуск сервиса:
+
+```bash
+docker-compose up --build
+```
+
+Остановка сервиса:
+
+```bash
+docker compose down
+```
+
+Просмотр запущенных сервисов:
+
+```bash
+docker compose ps
+```
+
+## 6. Собрать и запустить Spring Boot
 
 Сбор jar файла с пропуском тестов
 ```bash
